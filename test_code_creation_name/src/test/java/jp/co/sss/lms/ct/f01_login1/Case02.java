@@ -1,7 +1,6 @@
 package jp.co.sss.lms.ct.f01_login1;
 
 import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
-import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
@@ -65,10 +64,12 @@ public class Case02 {
 
 		//IDを入力
 		WebElement inputId = webDriver.findElement(By.id("loginId"));
+		inputId.clear();
 		inputId.sendKeys(testUser);
 
 		//パスワードを入力
 		WebElement inputPass = webDriver.findElement(By.id("password"));
+		inputPass.clear();
 		inputPass.sendKeys(testPass);
 
 		//ログインボタン押下
@@ -76,14 +77,20 @@ public class Case02 {
 		loginbtn.click();
 
 		//エラー文のチェック
-		WebElement errorMsg = webDriver.findElement(By.cssSelector(".help-inline"));
+		WebElement errorMsg = webDriver.findElement(By.cssSelector("span.help-inline.error"));
 		assertEquals("* ログインに失敗しました。", errorMsg.getText());
 
-		//IDが表示されているか
-		inputId.equals(testUser);
+		// ログイン後のIDを再取得
+		WebElement inputIdAfter = webDriver.findElement(By.id("loginId"));
 
-		//パスワードが空欄か
-		inputPass.equals(empty());
+		//IDが表示されているか
+		assertEquals(testUser, inputIdAfter.getAttribute("value"));
+
+		// ログイン後のパスワードを再取得
+		WebElement inputPassAfter = webDriver.findElement(By.id("password"));
+
+		// パスワードが空欄か
+		assertEquals("", inputPassAfter.getAttribute("value"));
 
 		//エビデンス取得
 		getEvidence(new Object() {
