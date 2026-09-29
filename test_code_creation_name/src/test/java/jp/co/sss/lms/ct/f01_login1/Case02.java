@@ -38,8 +38,6 @@ public class Case02 {
 	@Order(1)
 	@DisplayName("テスト01 トップページURLでアクセス")
 	void test01() {
-		// TODO ここに追加
-
 		//トップページURLにアクセス
 		goTo("http://localhost:8080/lms");
 
@@ -56,8 +54,6 @@ public class Case02 {
 	@Order(2)
 	@DisplayName("テスト02 DBに登録されていないユーザーでログイン")
 	void test02() {
-		// TODO ここに追加
-
 		//登録されていないユーザー
 		String testUser = "lmsTest";
 		String testPass = "pass123";
