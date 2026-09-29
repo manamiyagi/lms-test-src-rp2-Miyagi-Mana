@@ -60,7 +60,7 @@ public class Case03 {
 
 		//登録されているユーザー
 		String user = "StudentAA01";
-		String pass = "StudentAA01";
+		String pass = "Miyagimana0918";
 
 		//IDを入力
 		WebElement inputId = webDriver.findElement(By.id("loginId"));
